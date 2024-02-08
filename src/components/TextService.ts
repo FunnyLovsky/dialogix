@@ -10,7 +10,7 @@ export default class TextService {
     static limitMsg: number = 3500;
     static textValue: string;
     static textLength: number;
-    
+
     static initial(limitAll: number, limitMsg: number) {
         this.limitAll = limitAll ?? this.limitAll; 
         this.limitMsg = limitMsg ?? this.limitMsg;
@@ -53,9 +53,12 @@ export default class TextService {
         })
         
         arrStr.forEach((ms, index) => {
+            const curr = index + 1;
+            const all = arrStr.length;
+
             arrMsg.push({
-                title: `Скопировать часть [${index + 1}/${arrStr.length}]`,
-                copy: ms
+                title: `Скопировать часть [${curr}/${all}]`,
+                copy: this.createCopyMessage(ms, curr, all)
             })
         })
 
@@ -65,5 +68,9 @@ export default class TextService {
         });
 
         return arrMsg
+    }
+
+    static createCopyMessage(text: string, curr: number, all: number) {
+        return `Пока отвечать не нужно. Это только часть текста, который я хочу вам отправить. Просто примите и подтвердите, как  "Часть ${curr}/${all} принята" и ждите следующей части.\n[НАЧАЛО ЧАСТИ ${curr}/${all}]\n\n${text}\n\n[КОНЕЦ ЧАСТИ ${curr}/${all}]`
     }
 }

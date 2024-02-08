@@ -6,6 +6,20 @@ declare module '*.module.scss' {
     export = classNames;
 }
 
+declare const pdfjsLib: {
+    getDocument: (url: string | ArrayBuffer | Uint8Array) => {
+        promise: Promise<{
+            numPages: number;
+            getPage: (pageNumber: number) => Promise<{
+                getTextContent: () => Promise<{
+                    items: { str: string }[];
+                }>;
+            }>;
+        }>;
+    };
+};
+
+
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';

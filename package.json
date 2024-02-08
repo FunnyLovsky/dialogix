@@ -20,11 +20,9 @@
   "author": "Funny_lovsky",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.11.16",
-    "tsc": "^2.0.4",
-    "typescript": "^5.3.3",
     "@svgr/webpack": "^8.1.0",
     "@types/babel__core": "^7.20.3",
+    "@types/node": "^20.11.16",
     "@types/webpack": "^5.28.3",
     "@types/webpack-bundle-analyzer": "^4.6.1",
     "@types/webpack-dev-server": "^4.7.2",
@@ -38,9 +36,16 @@
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "ts-node": "^10.9.1",
+    "tsc": "^2.0.4",
+    "typescript": "^5.3.3",
     "webpack": "^5.88.2",
     "webpack-bundle-analyzer": "^4.9.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "mammoth": "^1.6.0",
+    "path-browserify": "^1.0.1",
+    "util": "^0.12.5"
   }
 }
