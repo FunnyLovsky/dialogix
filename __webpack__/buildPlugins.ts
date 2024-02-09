@@ -33,7 +33,7 @@ export function buildPlugins({mode, paths, analyzer, platform}: BuildOptions): C
         }))
         plugins.push(new CopyPlugin({
             patterns: [
-                { from: path.resolve(paths.public, 'locales'), to: path.resolve(paths.output, 'locales') },
+                { from: path.resolve(paths.public, 'locales'), to: path.resolve(paths.output, 'locales'), noErrorOnMissing: true, },
             ],
         }),)
     }
