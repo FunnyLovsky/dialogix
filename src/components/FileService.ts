@@ -1,30 +1,24 @@
+import RenderService from "./RenderService";
 
 export default class FileService {
-    static parseFile = async (e: Event, textarea: HTMLTextAreaElement) => {
+    static parseFile = async (e: Event, textarea: HTMLTextAreaElement, info: HTMLDivElement) => {
         const target = e.target as HTMLInputElement;
         const files = target.files;
-
-        if (files && files.length > 0) {
-            const file = files[0];
-            console.log('Выбранный файл:', file.name);
-            console.log('size', file.size);
-            console.log('modif', new Date(file.lastModified));
-            console.log('type', file.type);
-
-            switch (file.type) {
-                case 'application/pdf':
-                    textarea.value = await this.parsePDF(file); 
-                    break;
-                case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-                    textarea.value = await this.parseDOCX(file)
-                    break;
-
-                default:
-                    break;
-            }
-            
+    
+        if (!(files && files.length > 0)) {
+            throw new Error('Ошибка при обработке файла');
         }
-  
+    
+        const file = files[0];
+    
+        switch (file.type) {
+            case 'application/pdf':
+                textarea.value = await this.parsePDF(file); 
+                break;
+            
+            default:
+                throw new Error('Данный формат нельзя обработать!');
+        }
     }
 
     static async parsePDF(file: File) {

@@ -7,7 +7,8 @@ export interface IStart {
     button: HTMLButtonElement, 
     clear: HTMLButtonElement, 
     container: HTMLDivElement,
-    file: HTMLInputElement
+    file: HTMLInputElement,
+    info: HTMLDivElement
 }
 
 export default class Main {
@@ -16,17 +17,19 @@ export default class Main {
     static clear: HTMLButtonElement;
     static container: HTMLDivElement
     static file: HTMLInputElement;
+    static info: HTMLDivElement
 
     static initial(obj: IStart) {
         if (!obj) return; 
 
-        const { textarea, button, container, clear, file } = obj; 
+        const { textarea, button, container, clear, file, info } = obj; 
 
         this.textarea = textarea;
         this.button = button;
         this.clear = clear;
         this.container = container;
         this.file = file;
+        this.info = info;
 
         this.file.addEventListener('change', this.onFileHandler)
         this.button.addEventListener('click',  this.onBtnHandler);
@@ -35,13 +38,17 @@ export default class Main {
 
 
     static onBtnHandler = () => {
-        RenderService.clearMessage(this.container);
-
-        if(!TextService.updateText(this.textarea.value)) return;
-
-        const arrMsg = TextService.transformText()
-        
-        RenderService.render(arrMsg, this.container);
+        try {
+            TextService.updateText(this.textarea.value);
+            TextService.check()
+    
+            const arrMsg = TextService.transformText()
+            
+            RenderService.render(arrMsg, this.container);
+        } catch (error) {
+            RenderService.openInfo(this.info, 'err', error.message)
+        }
+ 
     }
 
     static onClearHandler = () => {
@@ -50,8 +57,13 @@ export default class Main {
         RenderService.clearMessage(this.container);
     }
 
-    static onFileHandler = (event: Event) => {
-        RenderService.clearMessage(this.container)
-        FileService.parseFile(event, this.textarea)
+    static onFileHandler = async (event: Event) => {
+        try {
+            RenderService.clearMessage(this.container);
+            await FileService.parseFile(event, this.textarea, this.info)
+        } catch (error) {
+            RenderService.openInfo(this.info, 'err', error.message)
+        }
+
     }
 }

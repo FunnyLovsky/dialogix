@@ -8,7 +8,8 @@ Main.initial({
     container: document.querySelector('.part_inner'),
     textarea: document.querySelector('.text'),
     clear: document.querySelector('.clear'),
-    file: document.querySelector('#file')
+    file: document.querySelector('#file'),
+    info: document.querySelector('.info')
 })
 
 TextService.initial(20000, 1000)

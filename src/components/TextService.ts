@@ -1,4 +1,5 @@
 import { END_MESSAGE, START_MESSAGE } from "@/lib/const";
+import RenderService from "./RenderService";
 
 export interface IMessage {
     copy: string,
@@ -19,21 +20,16 @@ export default class TextService {
     static updateText(textValue: string) {
         this.textValue = textValue;
         this.textLength = textValue.length;
-
-        return this.check()
     }
 
     static check() {
         if(this.textLength > this.limitAll) {
-            console.log(`Сообщение слишком большое! ${this.textLength} > ${this.limitAll}`);
-            return false
-        } else if(this.textLength < this.limitMsg) {
-            console.log(`Сообщение слишком маленькое! ${this.textLength} < ${this.limitMsg}`);
-            return false
-        } else {
-            console.log('text length', this.textLength);
-            return true
+            throw new Error(`Сообщение слишком большое! ${this.textLength} > ${this.limitAll}`)
         }
+        
+        if(this.textLength < this.limitMsg) {
+            throw new Error(`Сообщение слишком маленькое! ${this.textLength} < ${this.limitMsg}`)
+        } 
     }
 
     static transformText() {
