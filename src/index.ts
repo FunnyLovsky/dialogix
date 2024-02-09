@@ -12,4 +12,4 @@ Main.initial({
     info: document.querySelector('.info')
 })
 
-TextService.initial(20000, 1000)
+TextService.initial(20000)

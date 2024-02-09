@@ -60,7 +60,9 @@ export default class Main {
     static onFileHandler = async (event: Event) => {
         try {
             RenderService.clearMessage(this.container);
-            await FileService.parseFile(event, this.textarea, this.info)
+            RenderService.openInfo(this.info, 'notify', 'Идет обработка файла...');
+            await FileService.parseFile(event, this.textarea, this.info);
+            RenderService.openInfo(this.info, 'notify', 'Файл обработан!');
         } catch (error) {
             RenderService.openInfo(this.info, 'err', error.message)
         }

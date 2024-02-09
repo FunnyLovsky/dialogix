@@ -3,6 +3,7 @@ import { IMessage } from "./TextService";
 type InfoType = 'err' | 'notify';
 
 export default class RenderService {
+    static currentInfo: HTMLDivElement | null = null;
 
     static render(arrMsg: IMessage[], container: HTMLDivElement) {
         const arrHTML: Element[] = []
@@ -13,9 +14,15 @@ export default class RenderService {
 
             cont.className = 'part_cont';
             p.className = 'part_item';
+            let content: string[] = [];
 
             cont.onclick = () => {
-                navigator.clipboard.writeText(msg.copy)
+                if(content.length === 0) {
+                    content = p.innerHTML.split(' ');
+                    content[0] = 'Скопировано';
+                    p.innerHTML = 'Скопировано';
+                }
+                navigator.clipboard.writeText(msg.copy);
             }
             
             p.append(msg.title);
@@ -36,10 +43,18 @@ export default class RenderService {
         }
     }
 
+
     static openInfo(info: HTMLDivElement, type: InfoType, content: string) {
-        info.classList.add(type)
+        if (this.currentInfo) {
+            this.closeInfo(this.currentInfo, type);
+        }
+        
+        info.className = 'info';
+        info.classList.add(type);
         info.textContent = content;
         info.style.opacity = '1';
+
+        this.currentInfo = info;
 
         new Promise((resolve) => 
             setTimeout(() => resolve(''), 2000)
@@ -49,5 +64,6 @@ export default class RenderService {
     static closeInfo(info: HTMLDivElement, type: InfoType) {
         info.style.opacity = '0';
         info.classList.remove(type);
-    }   
+        this.currentInfo = null;
+    } 
 }

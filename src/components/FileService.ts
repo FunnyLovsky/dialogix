@@ -1,4 +1,3 @@
-import RenderService from "./RenderService";
 
 export default class FileService {
     static parseFile = async (e: Event, textarea: HTMLTextAreaElement, info: HTMLDivElement) => {
@@ -39,6 +38,7 @@ export default class FileService {
                     const text = textItems.join(' ');
                     fullText += text + '\n';
                 }
+                await new Promise(res => setTimeout(() => res(''), 1000))
                 console.log(fullText);
                 resolve(fullText);
             };
