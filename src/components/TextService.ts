@@ -6,14 +6,14 @@ export interface IMessage {
 }
 
 export default class TextService {
-    static limitAll: number = 15000;
-    static limitMsg: number = 3500;
+    static limitAll: number;
+    static limitMsg: number;
     static textValue: string;
     static textLength: number;
 
-    static initial(limitAll: number, limitMsg: number) {
-        this.limitAll = limitAll ?? this.limitAll; 
-        this.limitMsg = limitMsg ?? this.limitMsg;
+    static initial(limitAll: number = 15000, limitMsg: number = 3500) {
+        this.limitAll = limitAll; 
+        this.limitMsg = limitMsg;
     }
 
     static updateText(textValue: string) {

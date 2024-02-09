@@ -1,6 +1,6 @@
 
 export default class FileService {
-    static  parseFile = async (e: Event, textarea: HTMLTextAreaElement) => {
+    static parseFile = async (e: Event, textarea: HTMLTextAreaElement) => {
         const target = e.target as HTMLInputElement;
         const files = target.files;
 

@@ -46,7 +46,8 @@ export default class Main {
 
     static onClearHandler = () => {
         this.textarea.value = '';
-        RenderService.clearMessage(this.container)
+        this.file.value = '';
+        RenderService.clearMessage(this.container);
     }
 
     static onFileHandler = (event: Event) => {
