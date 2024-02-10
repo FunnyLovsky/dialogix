@@ -113,3 +113,29 @@ body {
 #file {
     display: none;
 }
+
+span {
+    padding: 2px 20px;
+    border-radius: 5px;
+    background: lightblue;
+    color: darken($color: lightblue, $amount: 40px);
+    transition: .3s;
+    display: inline-block;
+}
+
+.much {
+    background: lightcoral;
+    color: darken($color: lightcoral, $amount: 40px);
+}
+
+@keyframes count {
+    0% {
+        transform: scale(1); /* Исходный размер */
+      }
+      50% {
+        transform: scale(.8); /* Уменьшенный размер */
+      }
+      100% {
+        transform: scale(1); /* Возврат к исходному размеру */
+      }
+}

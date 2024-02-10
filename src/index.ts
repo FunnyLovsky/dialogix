@@ -9,7 +9,8 @@ Main.initial({
     textarea: document.querySelector('.text'),
     clear: document.querySelector('.clear'),
     file: document.querySelector('#file'),
-    info: document.querySelector('.info')
+    info: document.querySelector('.info'),
+    count: document.querySelector('#count')
 })
 
 TextService.initial(20000)

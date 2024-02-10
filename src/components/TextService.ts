@@ -32,6 +32,10 @@ export default class TextService {
         } 
     }
 
+    static isBigCount(count: number) {
+        return count > this.limitAll
+    }
+
     static transformText() {
         const arrMsg: IMessage[] = [];
         const arrStr: string[] = [];
