@@ -11,13 +11,15 @@ export default class FileService {
         const file = files[0];
         console.log(file.type);
         
-        await new Promise(res => setTimeout(() => res(''), 1000))
+        
         switch (file.type) {
             case 'application/pdf':
+                await new Promise(res => setTimeout(() => res(''), 1000))
                 textarea.value = await this.parsePDF(file); 
                 break;
 
             case 'text/plain':
+                await new Promise(res => setTimeout(() => res(''), 1000))
                 textarea.value = await file.text();
                 break;   
             

@@ -10,7 +10,8 @@ Main.initial({
     clear: document.querySelector('.clear'),
     file: document.querySelector('#file'),
     info: document.querySelector('.info'),
-    count: document.querySelector('#count')
+    count: document.querySelector('#count'),
+    save: document.querySelector('.save'),
 })
 
 TextService.initial(20000)

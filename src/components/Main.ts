@@ -10,6 +10,7 @@ export interface IStart {
     file: HTMLInputElement,
     info: HTMLDivElement,
     count: HTMLSpanElement,
+    save: HTMLButtonElement, 
 }
 
 export default class Main {
@@ -20,24 +21,42 @@ export default class Main {
     static file: HTMLInputElement;
     static info: HTMLDivElement;
     static count: HTMLSpanElement;
+    static save: HTMLButtonElement;
 
     static initial(obj: IStart) {
         if (!obj) return; 
 
-        const { textarea, button, container, clear, file, info, count } = obj; 
-
-        this.textarea = textarea;
-        this.button = button;
-        this.clear = clear;
-        this.container = container;
-        this.file = file;
-        this.info = info;
-        this.count = count;
+        this.textarea = obj.textarea;
+        this.button = obj.button;
+        this.clear = obj.clear;
+        this.container = obj.container;
+        this.file = obj.file;
+        this.info = obj.info;
+        this.count = obj.count;
+        this.save = obj.save;
 
         this.textarea.addEventListener('input', this.onTextAreaHandler);
         this.file.addEventListener('change', this.onFileHandler)
         this.button.addEventListener('click',  this.onBtnHandler);
         this.clear.addEventListener('click', this.onClearHandler);
+        window.addEventListener('load', this.onWindowHandler);
+        this.save.addEventListener('click', this.onSaveHandler)
+    }
+
+    static onWindowHandler = async () => {
+        RenderService.openInfo(this.info, 'notify', 'Идет загрузка данных...');
+        this.textarea.disabled = true
+        await new Promise(res => setTimeout(() => res(''), 1000))
+        this.textarea.value = localStorage.getItem('data') || '';
+        this.textarea.disabled = false
+        RenderService.openInfo(this.info, 'notify', 'Загрузка завершена');
+        this.onTextAreaHandler()
+    }
+
+    static onSaveHandler = () => {
+        this.save.innerHTML = 'Сохранено!'
+        localStorage.setItem('data', this.textarea.value);
+        RenderService.openInfo(this.info, 'notify', 'Данные сохранены!');
     }
 
     static onTextAreaHandler = () => {
