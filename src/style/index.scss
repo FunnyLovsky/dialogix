@@ -30,7 +30,7 @@ body {
 
 .info {
     position: absolute;
-    top: 100px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 40px;
@@ -54,26 +54,29 @@ body {
     padding: 10px;
 }
 
-.btn, .clear, label {
-    width: 200px;
-    margin-top: 30px;
-    padding: 10px 20px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    background: lightblue;
-    align-self: center;
-    cursor: pointer;
-    transition: .3s;
-
-    &:hover {
-        background: darken($color: lightblue, $amount: 10px);
-    }
-
-    &:active {
-        transform: scale(.7);
+.controls {
+    & button, label {
+        width: 200px;
+        margin-top: 30px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        background: lightblue;
+        align-self: center;
+        cursor: pointer;
+        transition: .3s;
+    
+        &:hover {
+            background: darken($color: lightblue, $amount: 10px);
+        }
+    
+        &:active {
+            transform: scale(.7);
+        }
     }
 }
+
 
 .part_inner {
     width: 100%;

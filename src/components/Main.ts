@@ -77,7 +77,7 @@ export default class Main {
         try {
             RenderService.clearMessage(this.container);
             RenderService.openInfo(this.info, 'notify', 'Идет обработка файла...');
-            await FileService.parseFile(event, this.textarea, this.info);
+            await FileService.parseFile(event, this.textarea);
             RenderService.openInfo(this.info, 'notify', 'Файл обработан!');
             this.onTextAreaHandler()
         } catch (error) {

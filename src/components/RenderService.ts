@@ -3,9 +3,10 @@ import { IMessage } from "./TextService";
 type InfoType = 'err' | 'notify';
 
 export default class RenderService {
-    static currentInfo: HTMLDivElement | null = null;
+    static controller: AbortController | null = null;
 
     static render(arrMsg: IMessage[], container: HTMLDivElement) {
+        this.clearMessage(container)
         const arrHTML: Element[] = []
         
         arrMsg.forEach(msg => {
@@ -45,25 +46,31 @@ export default class RenderService {
 
 
     static openInfo(info: HTMLDivElement, type: InfoType, content: string) {
-        if (this.currentInfo) {
-            this.closeInfo(this.currentInfo, type);
+        if (this.controller) {
+            this.closeInfo(info, type);
+            this.controller.abort();
+            this.controller = null;
         }
-        
+
+        this.controller = new AbortController();
+
         info.className = 'info';
         info.classList.add(type);
         info.textContent = content;
         info.style.opacity = '1';
 
-        this.currentInfo = info;
-
-        new Promise((resolve) => 
-            setTimeout(() => resolve(''), 2000)
-        ).then(() => this.closeInfo(info, type));
+        const timeout = setTimeout(() => {
+            this.closeInfo(info, type);
+        }, 2000);
+    
+        this.controller.signal.addEventListener('abort', () => {
+            clearTimeout(timeout); 
+            this.closeInfo(info, type);
+        }); 
     }
 
     static closeInfo(info: HTMLDivElement, type: InfoType) {
         info.style.opacity = '0';
         info.classList.remove(type);
-        this.currentInfo = null;
     } 
 }

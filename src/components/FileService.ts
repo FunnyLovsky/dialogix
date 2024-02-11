@@ -1,6 +1,6 @@
 
 export default class FileService {
-    static parseFile = async (e: Event, textarea: HTMLTextAreaElement, info: HTMLDivElement) => {
+    static parseFile = async (e: Event, textarea: HTMLTextAreaElement) => {
         const target = e.target as HTMLInputElement;
         const files = target.files;
     
@@ -9,11 +9,17 @@ export default class FileService {
         }
     
         const file = files[0];
-    
+        console.log(file.type);
+        
+        await new Promise(res => setTimeout(() => res(''), 1000))
         switch (file.type) {
             case 'application/pdf':
                 textarea.value = await this.parsePDF(file); 
                 break;
+
+            case 'text/plain':
+                textarea.value = await file.text();
+                break;   
             
             default:
                 throw new Error('Данный формат нельзя обработать!');
@@ -38,26 +44,9 @@ export default class FileService {
                     const text = textItems.join(' ');
                     fullText += text + '\n';
                 }
-                await new Promise(res => setTimeout(() => res(''), 1000))
-                console.log(fullText);
                 resolve(fullText);
             };
 
-        })
-    }
-
-    static async parseDOCX(file: File) {
-        return await new Promise<string>((resolve) => {
-            const reader = new FileReader();
-            reader.readAsArrayBuffer(file);
-
-            reader.onload = (event) => {
-                if (event.target && event.target.result) {
-                    const arrayBuffer = event.target.result as ArrayBuffer;
-                    resolve('Пока что обратботка DOCX не функционирует')
-                }
-            };
- 
         })
     }
 }
