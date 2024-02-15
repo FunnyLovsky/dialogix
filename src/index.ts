@@ -1,3 +1,4 @@
+import DataBase from './components/DataBase';
 import Main from './components/Main';
 import TextService from './components/TextService';
 import './style';
@@ -12,6 +13,9 @@ Main.initial({
     info: document.querySelector('.info'),
     count: document.querySelector('#count'),
     save: document.querySelector('.save'),
+    fetch: document.querySelector('.fetch')
 })
+
+DataBase.inital()
 
 TextService.initial(20000)

@@ -1,3 +1,4 @@
+
 import FileService from "./FileService";
 import RenderService from "./RenderService";
 import TextService from "./TextService";
@@ -10,7 +11,8 @@ export interface IStart {
     file: HTMLInputElement,
     info: HTMLDivElement,
     count: HTMLSpanElement,
-    save: HTMLButtonElement, 
+    save: HTMLButtonElement,
+    fetch: HTMLButtonElement
 }
 
 export default class Main {
@@ -22,6 +24,7 @@ export default class Main {
     static info: HTMLDivElement;
     static count: HTMLSpanElement;
     static save: HTMLButtonElement;
+    static fetch: HTMLButtonElement
 
     static initial(obj: IStart) {
         if (!obj) return; 
@@ -34,13 +37,13 @@ export default class Main {
         this.info = obj.info;
         this.count = obj.count;
         this.save = obj.save;
+        this.fetch = obj.fetch
 
         this.textarea.addEventListener('input', this.onTextAreaHandler);
         this.file.addEventListener('change', this.onFileHandler)
         this.button.addEventListener('click',  this.onBtnHandler);
         this.clear.addEventListener('click', this.onClearHandler);
-        window.addEventListener('load', this.onWindowHandler);
-        this.save.addEventListener('click', this.onSaveHandler)
+
     }
 
     static onWindowHandler = async () => {
@@ -53,11 +56,6 @@ export default class Main {
         this.onTextAreaHandler()
     }
 
-    static onSaveHandler = () => {
-        this.save.innerHTML = 'Сохранено!'
-        localStorage.setItem('data', this.textarea.value);
-        RenderService.openInfo(this.info, 'notify', 'Данные сохранены!');
-    }
 
     static onTextAreaHandler = () => {
         const value = this.textarea.value.length;
