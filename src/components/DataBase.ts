@@ -4,7 +4,8 @@ import RenderService from "./RenderService";
 export default class DataBase extends Main {
     static inital() {
         this.save.addEventListener('click', this.saveData);
-        this.fetch.addEventListener('click', this.onWindowHandler)
+        this.fetch.addEventListener('click', this.onWindowHandler);
+        this.delete.addEventListener('click', this.deleteData)
         window.addEventListener('load', this.onWindowHandler);
     }
 
@@ -21,7 +22,12 @@ export default class DataBase extends Main {
         this.textarea.value = localStorage.getItem('data') || '';
         this.textarea.disabled = false
         RenderService.openInfo(this.info, 'notify', 'Загрузка завершена');
-        this.onTextAreaHandler()
+        this.onTextAreaHandler(this.count, this.textarea.value)
+    }
+
+    static deleteData = () => {
+        localStorage.setItem('data', '');
+        RenderService.openInfo(this.info, 'notify', 'Данные удалены!');
     }
 
 }

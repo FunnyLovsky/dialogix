@@ -55,9 +55,13 @@ body {
 }
 
 .controls {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
     & button, label {
-        width: 200px;
-        margin-top: 30px;
+
+        margin: 10px 0 ;
         padding: 10px 20px;
         border-radius: 10px;
         outline: none;

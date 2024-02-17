@@ -13,7 +13,10 @@ Main.initial({
     info: document.querySelector('.info'),
     count: document.querySelector('#count'),
     save: document.querySelector('.save'),
-    fetch: document.querySelector('.fetch')
+    fetch: document.querySelector('.fetch'),
+    select: document.querySelector('#select'),
+    copy: document.querySelector('.copy'),
+    delete: document.querySelector('.delete')
 })
 
 DataBase.inital()
