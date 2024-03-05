@@ -35,7 +35,7 @@ body {
     transform: translateX(-50%);
     padding: 10px 40px;
     border-radius: 10px;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .err {
@@ -70,9 +70,9 @@ body {
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
-    & button, label {
-
-        margin: 10px 0 ;
+    & button,
+    label {
+        margin: 10px 0;
         padding: 10px 20px;
         border-radius: 10px;
         outline: none;
@@ -80,18 +80,17 @@ body {
         background: lightblue;
         align-self: center;
         cursor: pointer;
-        transition: .3s;
-    
+        transition: 0.3s;
+
         &:hover {
             background: darken($color: lightblue, $amount: 10px);
         }
-    
+
         &:active {
-            transform: scale(.7);
+            transform: scale(0.7);
         }
     }
 }
-
 
 .part_inner {
     width: 100%;
@@ -113,7 +112,7 @@ body {
         padding: 20px 30px;
         border-radius: 10px;
         display: inline-block;
-        transition: .3s;
+        transition: 0.3s;
 
         &:hover {
             background: darken($color: lightcoral, $amount: 10px);
@@ -121,10 +120,8 @@ body {
         }
 
         &:active {
-
-            transform: scale(.7);
+            transform: scale(0.7);
         }
-        
     }
 }
 
@@ -137,7 +134,7 @@ span {
     border-radius: 5px;
     background: lightblue;
     color: darken($color: lightblue, $amount: 40px);
-    transition: .3s;
+    transition: 0.3s;
     display: inline-block;
 }
 
@@ -149,11 +146,11 @@ span {
 @keyframes count {
     0% {
         transform: scale(1); /* Исходный размер */
-      }
-      50% {
-        transform: scale(.8); /* Уменьшенный размер */
-      }
-      100% {
+    }
+    50% {
+        transform: scale(0.8); /* Уменьшенный размер */
+    }
+    100% {
         transform: scale(1); /* Возврат к исходному размеру */
-      }
+    }
 }

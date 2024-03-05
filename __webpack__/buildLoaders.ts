@@ -1,9 +1,9 @@
-import {ModuleOptions} from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BuildOptions} from "./types/types";
+import { ModuleOptions } from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import { BuildOptions } from './types/types'
 
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
-    const isDev = options.mode === 'development';
+    const isDev = options.mode === 'development'
 
     const assetLoader = {
         test: /\.(png|jpg|jpeg|gif)$/i,
@@ -23,17 +23,17 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                                 name: 'convertColors',
                                 params: {
                                     currentColor: true,
-                                }
-                            }
-                        ]
-                    }
-                }
-            }
+                                },
+                            },
+                        ],
+                    },
+                },
+            },
         ],
     }
 
     const cssLoaderWithModules = {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
             modules: {
                 localIdentName: '[local]',
@@ -50,11 +50,9 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
             // Translates CSS into CommonJS
             cssLoaderWithModules,
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader',
         ],
     }
-
-
 
     const tsLoader = {
         // ts-loader умеет работать с JSX
@@ -66,15 +64,10 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
                 loader: 'ts-loader',
                 options: {
                     transpileOnly: true,
-                }
-            }
-        ]
+                },
+            },
+        ],
     }
 
-    return [
-        assetLoader,
-        scssLoader,
-        tsLoader,
-        svgrLoader
-    ]
+    return [assetLoader, scssLoader, tsLoader, svgrLoader]
 }

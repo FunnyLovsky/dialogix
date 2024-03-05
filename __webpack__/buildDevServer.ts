@@ -1,5 +1,5 @@
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
-import {BuildOptions} from "./types/types";
+import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
+import { BuildOptions } from './types/types'
 
 export function buildDevServer(options: BuildOptions): DevServerConfiguration {
     return {
@@ -7,6 +7,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         open: true,
         // если раздавать статику через nginx То надо делать проксирование на Index.html
         historyApiFallback: true,
-        hot: true
+        hot: true,
     }
 }

@@ -1,8 +1,7 @@
-import DataBase from './components/DataBase';
-import Main from './components/Main';
-import TextService from './components/TextService';
-import './style';
-
+import DataBase from './components/DataBase'
+import Main from './components/Main'
+import TextService from './components/TextService'
+import './style'
 
 Main.initial({
     button: document.querySelector('.btn'),
@@ -16,7 +15,7 @@ Main.initial({
     fetch: document.querySelector('.fetch'),
     select: document.querySelector('#select'),
     copy: document.querySelector('.copy'),
-    delete: document.querySelector('.delete')
+    delete: document.querySelector('.delete'),
 })
 
 DataBase.inital()

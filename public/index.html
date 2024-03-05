@@ -1,49 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="description" content="Boost your ChatGPT conversations with tailored prompts using our AI-powered tool. Generate engaging prompts effortlessly.">
-    <meta name="keywords" content="ChatGPT, prompts, AI, conversational AI, chatbot, conversation, generator, tool">
-    <meta name="author" content="Funny_lovsky">
-    <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="7 days">
-    <meta name="og:title" content="Dialogix">
-    <meta name="og:description" content="Boost your ChatGPT conversations with tailored prompts using our AI-powered tool. Generate engaging prompts effortlessly.">
-    <meta name="og:image" content="https://example.com/og-image.jpg">
-    <meta name="og:url" content="https://example.com">
-    <meta name="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
-    <title>Dialogix</title>
-</head>
-<body>
-    <div class="container">
-        <div class="inner">
-            <div class="info"></div>
-            <div class="controls">
-                <button class="save">Сохранить</button>
-                <button class="fetch">Загрузить данные</button>
-                <button class="delete">Удалить данные</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Boost your ChatGPT conversations with tailored prompts using our AI-powered tool. Generate engaging prompts effortlessly."
+        />
+        <meta
+            name="keywords"
+            content="ChatGPT, prompts, AI, conversational AI, chatbot, conversation, generator, tool"
+        />
+        <meta name="author" content="Funny_lovsky" />
+        <meta name="robots" content="index, follow" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="og:title" content="Dialogix" />
+        <meta
+            name="og:description"
+            content="Boost your ChatGPT conversations with tailored prompts using our AI-powered tool. Generate engaging prompts effortlessly."
+        />
+        <meta name="og:image" content="https://example.com/og-image.jpg" />
+        <meta name="og:url" content="https://example.com" />
+        <meta name="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.313/pdf.min.js"></script>
+        <title>Dialogix</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="inner">
+                <div class="info"></div>
+                <div class="controls">
+                    <button class="save">Сохранить</button>
+                    <button class="fetch">Загрузить данные</button>
+                    <button class="delete">Удалить данные</button>
+                </div>
+                <textarea class="text" placeholder="Введите текст..."></textarea>
+                <div class="controls">
+                    <button class="btn">Создать</button>
+                    <button class="clear">Очистить</button>
+                    <button class="copy">Копировать</button>
+                    <label for="file">Выберите файл</label>
+                    <input type="file" id="file" />
+                </div>
+                <div class="data">
+                    <h4>Кол-во символов: <span id="count">0</span></h4>
+                    <h4>Кол-во выделеных символов: <span id="select">0</span></h4>
+                </div>
             </div>
-            <textarea class="text" placeholder="Введите текст..."></textarea>
-            <div class="controls">
-                <button class="btn">Создать</button>
-                <button class="clear">Очистить</button>
-                <button class="copy">Копировать</button>
-                <label for="file">Выберите файл</label>
-                <input type="file" id="file">
-            </div>
-            <div class="data">
-                <h4>Кол-во символов: <span id="count">0</span></h4>
-                <h4>Кол-во выделеных символов: <span id="select">0</span></h4>
+            <div class="inner">
+                <div class="part_inner"></div>
             </div>
         </div>
-        <div class="inner">
-            <div class="part_inner">
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 </html>

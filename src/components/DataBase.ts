@@ -1,33 +1,32 @@
-import Main from "./Main";
-import RenderService from "./RenderService";
+import Main from './Main'
+import RenderService from './RenderService'
 
 export default class DataBase extends Main {
     static inital() {
-        this.save.addEventListener('click', this.saveData);
-        this.fetch.addEventListener('click', this.onWindowHandler);
+        this.save.addEventListener('click', this.saveData)
+        this.fetch.addEventListener('click', this.onWindowHandler)
         this.delete.addEventListener('click', this.deleteData)
-        window.addEventListener('load', this.onWindowHandler);
+        window.addEventListener('load', this.onWindowHandler)
     }
 
     static saveData = () => {
         this.save.innerHTML = 'Сохранено!'
-        localStorage.setItem('data', this.textarea.value);
-        RenderService.openInfo(this.info, 'notify', 'Данные сохранены!');
+        localStorage.setItem('data', this.textarea.value)
+        RenderService.openInfo(this.info, 'notify', 'Данные сохранены!')
     }
 
     static onWindowHandler = async () => {
-        RenderService.openInfo(this.info, 'notify', 'Идет загрузка данных...');
+        RenderService.openInfo(this.info, 'notify', 'Идет загрузка данных...')
         this.textarea.disabled = true
-        await new Promise(res => setTimeout(() => res(''), 1000))
-        this.textarea.value = localStorage.getItem('data') || '';
+        await new Promise((res) => setTimeout(() => res(''), 1000))
+        this.textarea.value = localStorage.getItem('data') || ''
         this.textarea.disabled = false
-        RenderService.openInfo(this.info, 'notify', 'Загрузка завершена');
+        RenderService.openInfo(this.info, 'notify', 'Загрузка завершена')
         this.onTextAreaHandler(this.count, this.textarea.value)
     }
 
     static deleteData = () => {
-        localStorage.setItem('data', '');
-        RenderService.openInfo(this.info, 'notify', 'Данные удалены!');
+        localStorage.setItem('data', '')
+        RenderService.openInfo(this.info, 'notify', 'Данные удалены!')
     }
-
 }
