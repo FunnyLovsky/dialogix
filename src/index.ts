@@ -16,8 +16,8 @@ Main.initial({
     select: document.querySelector('#select'),
     copy: document.querySelector('.copy'),
     delete: document.querySelector('.delete'),
+    scopeText: document.querySelector('#scopeText'),
+    scopeMessage: document.querySelector('#scopeMessage'),
 })
 
 DataBase.inital()
-
-TextService.initial(20000)

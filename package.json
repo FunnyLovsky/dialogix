@@ -53,16 +53,13 @@
         "util": "^0.12.5"
     },
     "lint-staged": {
-      "src/**/*.{js,jsx,ts,tsx,json}": [
-          "eslint --fix"
-      ],
-      "src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
-          "prettier --write"
-      ]
-  },
-  "husky": {
-      "hooks": {
-          "pre-commit": "lint-staged"
-      }
-  }
+        "src/**/*.{js,jsx,ts,tsx,json,css,scss}": [
+            "prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    }
 }

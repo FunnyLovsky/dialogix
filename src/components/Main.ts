@@ -15,6 +15,8 @@ export interface IStart {
     select: HTMLSpanElement
     copy: HTMLButtonElement
     delete: HTMLButtonElement
+    scopeText: HTMLInputElement
+    scopeMessage: HTMLInputElement
 }
 
 export default class Main {
@@ -30,6 +32,8 @@ export default class Main {
     static select: HTMLSpanElement
     static copy: HTMLButtonElement
     static delete: HTMLButtonElement
+    static scopeText: HTMLInputElement
+    static scopeMessage: HTMLInputElement
 
     static initial(obj: IStart) {
         if (!obj) return
@@ -46,6 +50,8 @@ export default class Main {
         this.select = obj.select
         this.copy = obj.copy
         this.delete = obj.delete
+        this.scopeText = obj.scopeText
+        this.scopeMessage = obj.scopeMessage
 
         this.textarea.addEventListener('input', () =>
             this.onTextAreaHandler(this.count, this.textarea.value)
@@ -64,6 +70,9 @@ export default class Main {
                 }
             }
         })
+        this.scopeMessage.addEventListener('change', this.changeScope)
+        this.scopeText.addEventListener('change', this.changeScope)
+        this.changeScope()
     }
 
     static onWindowHandler = async () => {
@@ -83,6 +92,28 @@ export default class Main {
 
         element.offsetHeight
         element.style.animation = 'count .5s ease-in-out'
+    }
+
+    static changeScope = () => {
+        const text = +this.scopeText.value
+        const msg = +this.scopeMessage.value
+        if (text < 3500) {
+            return RenderService.openInfo(
+                this.info,
+                'err',
+                `Ошибка в объеме текста: ${text} < 3500`
+            )
+        }
+
+        if (msg > 3500) {
+            return RenderService.openInfo(
+                this.info,
+                'err',
+                `Ошибка в объеме сообщения: ${msg} > 3500`
+            )
+        }
+
+        TextService.initial(+this.scopeText.value, +this.scopeMessage.value)
     }
 
     static onBtnHandler = () => {

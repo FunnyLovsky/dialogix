@@ -62,10 +62,19 @@ body {
         width: 100%;
         display: block;
     }
+
+    & input {
+        padding: 2px 20px;
+        display: inline-block;
+        width: auto;
+        border-radius: 5px;
+        background: lightblue;
+    }
 }
 
 .controls {
     display: flex;
+    justify-content: space-between;
     width: 100%;
     gap: 10px;
     align-items: center;

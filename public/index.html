@@ -38,15 +38,23 @@
                 </div>
                 <textarea class="text" placeholder="Введите текст..."></textarea>
                 <div class="controls">
+                    <div>
+                        <button class="clear">Очистить</button>
+                        <button class="copy">Копировать</button>
+                        <label for="file">Выберите файл</label>
+                        <input type="file" id="file" />
+                    </div>
+
                     <button class="btn">Создать</button>
-                    <button class="clear">Очистить</button>
-                    <button class="copy">Копировать</button>
-                    <label for="file">Выберите файл</label>
-                    <input type="file" id="file" />
                 </div>
                 <div class="data">
                     <h4>Кол-во символов: <span id="count">0</span></h4>
                     <h4>Кол-во выделеных символов: <span id="select">0</span></h4>
+
+                </div>
+                <div class="data">
+                    <h4>Объем текста: <input type="number" value="20000" step="100" min="3500" id="scopeText"> </h4>
+                    <h4>Объем сообщения: <input type="number" value="3500" step="100" max="3500" id="scopeMessage"></h4>
                 </div>
             </div>
             <div class="inner">
