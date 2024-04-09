@@ -163,3 +163,14 @@ span {
         transform: scale(1); /* Возврат к исходному размеру */
     }
 }
+
+@media screen and (max-width: 1000px) {
+    .container {
+        flex-wrap: wrap;
+    }
+
+    .inner {
+        justify-content: flex-start;
+        width: 100%;
+    }
+}
